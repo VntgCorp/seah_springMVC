@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 여기에 package를 적어주면 board-mapper.xml의 mapper 태그에서 package가 생략 가능하다. -->
+		<package name="com.digitus.board.vo" />
+	</typeAliases>
+</configuration>

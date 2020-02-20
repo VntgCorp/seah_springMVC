@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digitus.board.mapper.BoardMapper">
+	
+	<resultMap type="com.digitus.board.vo.Board" id="boardMap">
+		<result column="write_date" property="writeDate" />
+		<result column="update_date" property="updateDate" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="boardMap">
+		select * from mvc_board
+	</select>
+	
+	<select id="selectOne" resultMap="boardMap">
+		select * from mvc_board where bno=#{bno}
+	</select> 
+	
+	<insert id="create">
+		insert into mvc_board(write, title, content)
+		values(#{writer}, #{title}, #{content})
+	</insert>
+
+	<update id="modify">
+		update mvc_board set 
+			writer=#{writer},
+			title=#{title}, 
+			content=#{content} 
+		 where bno=#{bno}
+	</update>
+	
+	<delete id="remove">
+		delete from mvc_board where bno=#{bno}
+	</delete>
+	
+	<update id="hitUpdate">
+		update mvc_board set 
+			hit=hit+1 
+		 where bno=#{bno}
+	</update>
+</mapper>
