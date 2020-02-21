@@ -16,7 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.digitus.board.vo.Board;
-
+import com.digitus.board.vo.PagingTO;
+@Deprecated
 @Repository
 public class BoardDaoImpl implements BoardDao {
 
@@ -27,13 +28,20 @@ public class BoardDaoImpl implements BoardDao {
 	private static String NAMESPACE = "com.digitus.board.mapper.BoardMapper";
 
 	@Override
-	public void create(Board board) throws Exception {
+	public void create(Board board) {
 		sqlSession.insert(NAMESPACE + ".create", board);
 	}
 
 	@Override
-	public List<Board> listAll() throws Exception {
-		return sqlSession.selectList(NAMESPACE + ".selectAll");
+	public List<Board> listAll(PagingTO pagingTO) throws Exception {
+//		Map<String, PagingTO> paramMap = new HashMap<String, PagingTO>();
+//		paramMap.put("pagingTO", pagingTO);
+		return sqlSession.selectList(NAMESPACE + ".selectAll", pagingTO);
+	}
+
+	@Override
+	public int listAllCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".selectAllCount");
 	}
 
 	@Override
@@ -43,12 +51,12 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public void update(Board board) throws Exception {
-		sqlSession.update(NAMESPACE + ".update", board);
+		sqlSession.update(NAMESPACE + ".modify", board);
 	}
 
 	@Override
 	public void delete(int bno) throws Exception {
-		sqlSession.delete(NAMESPACE + ".delete", bno);
+		sqlSession.delete(NAMESPACE + ".remove", bno);
 	}
 
 	@Override

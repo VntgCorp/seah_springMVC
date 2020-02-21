@@ -1,34 +1,36 @@
 /*
  * Copyright 2020 The Spring Example Project
  * 
- * 간단한 게시판을 구현하기 위한 Mapper 인터페이스
- * board-mapper.xml에 정의 되어있는 기능에 접근하여 데이터를 처리한다. 
- * 
- * board-mapper.xml에 입력된 Query Set의 ID와 Method명 과 파라미터, 리턴 타입이 동일하다.
+ * 간단한 게시판을 구현하기 위한 Dao 인터페이스
+ * 게시판에 대한 데이터 요청을 정의한다.
  * 
  * by Davis.
  */
 
 package com.digitus.board.mapper;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.digitus.board.vo.Board;
+import com.digitus.board.vo.PagingTO;
 
 @Mapper
 public interface BoardMapper {
-	public void create(Board board) throws Exception;
+	public void create(Board board) throws SQLException;
 
-	public List<Board> listAll() throws Exception;
+	public List<Board> selectAll(PagingTO pagingTO) throws SQLException;
 
-	public Board read(int bno) throws Exception;
+	public Board selectOne(int bno) throws SQLException;
 
-	public void update(Board board) throws Exception;
+	public void modify(Board board) throws SQLException;
 
-	public void delete(int bno) throws Exception;
+	public void remove(int bno) throws SQLException;
 
-	public void hitUpdate(int bno) throws Exception;
+	public void hitUpdate(int bno) throws SQLException;
+
+	public int selectAllCount() throws SQLException;
 
 }

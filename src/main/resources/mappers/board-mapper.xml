@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.digitus.board.mapper.BoardMapper">
 	
 	<resultMap type="com.digitus.board.vo.Board" id="boardMap">
@@ -7,7 +11,14 @@
 	</resultMap>
 	
 	<select id="selectAll" resultMap="boardMap">
-		select * from mvc_board
+		select * from mvc_board order by bno desc
+		<if test="startRow != null">
+			LIMIT #{startRow}, #{endRow}
+		</if>
+	</select>
+
+	<select id="selectAllCount" resultType="int">
+		select count(0) from mvc_board
 	</select>
 	
 	<select id="selectOne" resultMap="boardMap">
@@ -15,7 +26,7 @@
 	</select> 
 	
 	<insert id="create">
-		insert into mvc_board(write, title, content)
+		insert into mvc_board(writer, title, content)
 		values(#{writer}, #{title}, #{content})
 	</insert>
 

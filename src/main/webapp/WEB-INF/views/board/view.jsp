@@ -33,7 +33,7 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>게시글 상세</h1>
+			<h2>게시글 상세</h2>
 			<!-- Table -->
 			<table class="table">
 				<colgroup>
@@ -64,6 +64,10 @@
 	</div>
 	<!-- /.container -->
 	<script type="text/javascript">
+		<c:if test="${message ne null}">
+			window.alert('${message}');
+		</c:if>
+	
 		function goList() {
 			location.href='/board';
 		}

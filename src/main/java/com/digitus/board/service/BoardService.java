@@ -11,9 +11,12 @@ package com.digitus.board.service;
 import java.util.List;
 
 import com.digitus.board.vo.Board;
+import com.digitus.board.vo.PagingTO;
 
 public interface BoardService {
-	public List<Board> listAll() throws Exception;
+	public List<Board> listAll(PagingTO pagingTO) throws Exception;
+	
+	public int listAllCount() throws Exception;
 
 	public void insert(Board board) throws Exception;
 

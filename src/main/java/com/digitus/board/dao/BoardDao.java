@@ -12,11 +12,12 @@ package com.digitus.board.dao;
 import java.util.List;
 
 import com.digitus.board.vo.Board;
-
+import com.digitus.board.vo.PagingTO;
+@Deprecated
 public interface BoardDao {
 	public void create(Board board) throws Exception;
 
-	public List<Board> listAll() throws Exception;
+	public List<Board> listAll(PagingTO pagingTO) throws Exception;
 
 	public Board read(int bno) throws Exception;
 
@@ -25,5 +26,7 @@ public interface BoardDao {
 	public void delete(int bno) throws Exception;
 
 	public void hitUpdate(int bno) throws Exception;
+
+	public int listAllCount() throws Exception;
 
 }

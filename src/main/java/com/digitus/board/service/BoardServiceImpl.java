@@ -15,19 +15,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.digitus.board.dao.BoardDao;
+import com.digitus.board.mapper.BoardMapper;
 import com.digitus.board.vo.Board;
+import com.digitus.board.vo.PagingTO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 	
+//	private BoardDao dao;
 	@Autowired
-	private BoardDao dao;
+	private BoardMapper dao;
 
 	/** 게시글 전체 목록을 불러온다. */
 	@Override
-	public List<Board> listAll() throws Exception {
-		return dao.listAll();
+	public List<Board> listAll(PagingTO pagingTO) throws Exception {
+		return dao.selectAll(pagingTO);
 	}
+	
+
+	@Override
+	public int listAllCount() throws Exception {
+		return dao.selectAllCount();
+	}
+
 
 	/** 게시글을 등록 한다. */
 	@Override
@@ -41,18 +51,18 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board read(int bno) throws Exception {
 		dao.hitUpdate(bno);
-		return dao.read(bno);
+		return dao.selectOne(bno);
 	}
 	
 	/** 게시글을 수정한다. */
 	@Override
 	public void modify(Board board) throws Exception {
-		dao.update(board);
+		dao.modify(board);
 	}
 
 	/** 게시글을 삭제 한다. */
 	@Override
 	public void delete(int bno) throws Exception {
-		dao.delete(bno);
+		dao.remove(bno);
 	}
 }

@@ -13,12 +13,8 @@
 <title>Write</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
 
 
 <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
@@ -27,47 +23,103 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style type="text/css">
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 1% 0;
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
+</style>
 </head>
 <body>
-
 	<div class="container">
-
-		<div class="starter-template">
-			<h1>게시판</h1>
-			<!-- Table -->
-			<table class="table table-hover">
+		<div align="right" style="margin-top: 20px;">
+			<button type="button" class="btn btn-info"
+				onclick="javascript:location.href='/board/write';">게시글 작성</button>
+		</div>
+		<div class="row" align="center">
+			<table class="table table-striped custab">
 				<colgroup>
 					<col width="100px" />
-					<col width="*" />
+					<col width="" />
 					<col width="150px" />
+					<col width="200px" />
 				</colgroup>
-				<thead>
+				<thead align="center">
 					<tr>
-						<th scope="col">No.</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
+						<th>No.</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>Action</th>
 					</tr>
 				</thead>
-				<tbody>
-					<c:forEach items="${list}" var="board">
-						<tr class="list-row" bno="${board.bno }">
-							<td scope="row">${board.bno }</td>
-							<td>${board.title }</td>
-							<td>${board.writer }</td>
-						</tr>
-					</c:forEach>
-			</tbody>
+				<c:if test="${list ne null and list.size() eq 0 }">
+					<tr>
+						<td align="center">게시글이 없습니다.</td>
+					</tr>
+				</c:if>
+				<c:forEach items="${list}" var="board">
+					<tr>
+						<td align="center">${board.bno }</td>
+						<td class="list-row" bno="${board.bno }">${board.title }</td>
+						<td align="center">${board.writer }</td>
+						<td class="text-center"><a class='btn btn-info btn-xs'
+							href="/board/update/${board.bno }"> <span
+								class="glyphicon glyphicon-edit"></span> Edit
+						</a> <a class="btn btn-danger btn-xs delBtn"
+							href="javascript:void(0);" bno="${board.bno }"> <span
+								class="glyphicon glyphicon-remove"></span> Del
+						</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				${paginator.getPageHtml() }
+			</ul>
+		</nav>
 	</div>
-	<!-- /.container -->
+	<form id="delForm" name="delForm" method="POST" action="">
+		<input type="hidden" name="_method" value="DELETE"> <input
+			type="hidden" name="bno" value="">
+	</form>
+
+	<form name="nextForm" action="/board" method="GET">
+		<input type="hidden" name="pages" value="${paginator.pagingTO.pages }">
+	</form>
 
 	<script type="text/javascript">
+	function goList(page) {
+		document.nextForm.pages.value = page;
+		document.nextForm.submit();
+	}
 		window.onload = function() {
-			$('.list-row').click(function (){
-				console.log('click ::: '+$(this).attr("bno"));
-				location.href = '/board/'+$(this).attr("bno");
+			$('.list-row').click(function() {
+				console.log('click ::: ' + $(this).attr("bno"));
+				location.href = '/board/post/' + $(this).attr("bno");
 			});
+
+			$('.delBtn').click(function() {
+				var bno = $(this).attr('bno');
+				document.delForm.bno.value = bno;
+				document.delForm.action = '/board/delete/' + bno;
+				$('#delForm').submit();
+
+			});
+
+			
+			<c:if test="${message ne null}">
+			alert('${message}');
+			location.href = "/board";
+			</c:if>
 		};
 	</script>
 
@@ -75,10 +127,7 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
+
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
