@@ -1,18 +1,19 @@
+## Table ìŠ¤í‚¤ë§ˆ
 
 CREATE TABLE `seah_spring`.`mvc_board` (
-  `bno` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'º¸µå ¾ÆÀÌµğ' ,
-  `writer` VARCHAR(100) NULL COMMENT 'ÀÛ¼ºÀÚ',
-  `title` VARCHAR(100) NULL COMMENT '°Ô½Ã±Û Á¦¸ñ',
-  `content` VARCHAR(1000) NULL COMMENT '°Ô½Ã±Û ³»¿ë',
-  `hit` INT NULL DEFAULT 0 COMMENT '³»¿ë Å¬¸¯ Ä«¿îÆ®',
-  `write_date` DATETIME NULL DEFAULT now() COMMENT 'ÀÛ¼ºÀÏ',
+  `bno` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ë³´ë“œ ì•„ì´ë””' ,
+  `writer` VARCHAR(100) NULL COMMENT 'ì‘ì„±ì',
+  `title` VARCHAR(100) NULL COMMENT 'ê²Œì‹œê¸€ ì œëª©',
+  `content` VARCHAR(1000) NULL COMMENT 'ê²Œì‹œê¸€ ë‚´ìš©',
+  `hit` INT NULL DEFAULT 0 COMMENT 'ë‚´ìš© í´ë¦­ ì¹´ìš´íŠ¸',
+  `write_date` DATETIME NULL DEFAULT now() COMMENT 'ì‘ì„±ì¼',
   `update_date` DATETIME NULL DEFAULT null ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`bno`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COMMENT = 'board ÀÛ¼º Å×ÀÌºí';
+COMMENT = 'board ì‘ì„± í…Œì´ë¸”';
 
-insert into mvc_board(writer, title, content) values ('È«±æµ¿', 'Á¦¸ñ1', '³»¿ë1ÀÔ´Ï´Ù');
+insert into mvc_board(writer, title, content) values ('í™ê¸¸ë™', 'ì œëª©1', 'ë‚´ìš©1ì…ë‹ˆë‹¤');
 
 CREATE TABLE `seah_spring`.`member` (
   `mid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -25,4 +26,4 @@ CREATE TABLE `seah_spring`.`member` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-insert into member (user_id, `name`, `password`) values ('test', 'È«±æµ¿', password('password123'));
+insert into member (user_id, `name`, `password`) values ('test', 'í™ê¸¸ë™', password('password123'));
