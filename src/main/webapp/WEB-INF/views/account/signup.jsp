@@ -35,34 +35,38 @@
 <body>
 	<div class="container">
 		<div class="row justify-content-center" style="margin-top: 100px;">
-			<form name="writeForm" id="writeForm" method="POST" action="/signup" onSubmit="check_password()">
-				<div class="form-group">
-					<label for="userId">아이디</label> 
-					<input type="text" class="form-control" id="userId" name="userId" required>
-				</div>
-				<div class="form-group">
-					<label for="name">이름</label> 
-					<input type="text" class="form-control" id="name" name="name" required>
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" name="password" required>
-				</div>
-				<div class="form-group">
-					<label for="confirm">Confirm Password</label>
-					<input type="password" class="form-control" id="confirm" name="confirm" required>
-				</div>
-				<!-- form-group// -->
-				<div class="row">
-					<div class="col-md-12">
+			<div class="card">
+				<article class="card-body">
+					<form name="writeForm" id="writeForm" method="POST" action="/signup" onSubmit="check_password()">
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block">
-								저장</button>
+							<label for="userId">아이디</label> 
+							<input type="text" class="form-control" id="userId" name="userId" required>
 						</div>
-					</div>
-				</div>
-				<!-- .row// -->
-			</form>
+						<div class="form-group">
+							<label for="name">이름</label> 
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password" required>
+						</div>
+						<div class="form-group">
+							<label for="confirm">Confirm Password</label>
+							<input type="password" class="form-control" id="confirm" name="confirm" required>
+						</div>
+						<!-- form-group// -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-block">
+										저장</button>
+								</div>
+							</div>
+						</div>
+						<!-- .row// -->
+					</form>
+				</article>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
