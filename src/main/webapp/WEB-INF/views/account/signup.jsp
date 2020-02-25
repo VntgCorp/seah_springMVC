@@ -56,7 +56,13 @@
 						</div>
 						<!-- form-group// -->
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-6">
+								<div class="form-group">
+									<button type="button" class="btn btn-default btn-block" onclick="javascript:location.href='/login';">
+										취소</button>
+								</div>
+							</div>
+							<div class="col-md-6">
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary btn-block">
 										저장</button>

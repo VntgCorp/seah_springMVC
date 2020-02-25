@@ -14,7 +14,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digitus.board.dao.BoardDao;
 import com.digitus.board.mapper.BoardMapper;
 import com.digitus.board.vo.Board;
 import com.digitus.board.vo.PagingTO;
