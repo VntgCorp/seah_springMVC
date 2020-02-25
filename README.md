@@ -1,50 +1,43 @@
-# seah_springMVC
 Spring MVC Project
 
-- °³¹ßÈ¯°æ ¼ÂÆÃ
+- ê°œë°œí™˜ê²½ ì…‹íŒ…
+1. Java ì„¤ì¹˜ 
+	https://jdk.java.net/ ì ‘ì†í›„ java8ë²„ì „ ë‹¤ìš´ë¡œë“œ
 
-1. Java ¼³Ä¡
-https://jdk.java.net/ Á¢¼ÓÈÄ java8¹öÀü ´Ù¿î·Îµå
+2. tomcat ì„¤ì¹˜ 
+	https://tomcat.apache.org/download-80.cgi ìœˆë„ìš°ìš© ì„¤ì¹˜.
 
-2. tomcat ¼³Ä¡
-https://tomcat.apache.org/download-80.cgi À©µµ¿ì¿ë ¼³Ä¡.
+3. Spring Tools ì„¤ì¹˜ (Eclipse) 
+	https://spring.io/tools ë‹¤ìš´ë¡œë“œí›„ ë”ë¸”í´ë¦­ í•˜ì—¬ ì••ì¶• í•´ì œ. SpringToolSuite4.exe ì‹¤í–‰.
 
-3. Spring Tools ¼³Ä¡ (Eclipse)
-https://spring.io/tools
-´Ù¿î·ÎµåÈÄ ´õºíÅ¬¸¯ ÇÏ¿© ¾ÐÃà ÇØÁ¦. SpringToolSuite4.exe ½ÇÇà.
+4. mysql ì„¤ì¹˜ 
+	https://dev.mysql.com/downloads/mysql/
 
-4. mysql ¼³Ä¡
-https://dev.mysql.com/downloads/mysql/
-
-
-- µð·ºÅä¸® ±¸Á¶
-1. src/main/java ...
-	java Source°¡ À§Ä¡ÇÏ´Â Æú´õ.
-
-2. resources
-	À¥ È­¸é¿¡¼­ »ç¿ëµÉ ÀÚ¿øÀÌ ÀúÀåµÇ´Â Æú´õ ex)css, js, image
+5. mysql workbench ì„¤ì¹˜ 
+	https://dev.mysql.com/downloads/workbench/
 	
-3. servlet-context.xml
-	Spring À¥ ÄÁÅ×ÀÌ³Ê ¼³Á¤ ÆÄÀÏ
 	
+- ë””ë ‰í† ë¦¬ êµ¬ì¡°
+1. src/main/java ... 
+	java Sourceê°€ ìœ„ì¹˜í•˜ëŠ” í´ë”.
+
+2. resources 
+	ì›¹ í™”ë©´ì—ì„œ ì‚¬ìš©ë  ìžì›ì´ ì €ìž¥ë˜ëŠ” í´ë” ex)css, js, image
+
+3. servlet-context.xml 
+	Spring ì›¹ ì»¨í…Œì´ë„ˆ ì„¤ì • íŒŒì¼
+
 4. web.xml
-	- DispatcherServlet ¼­ºí¸´ ¸ÊÇÎ
-	- ½ºÇÁ¸µ ¼³Á¤ ÆÄÀÏ À§Ä¡ Á¤ÀÇ
-	
-	DispatchServlet?
-		- Å¬¶óÀÌ¾ðÆ®ÀÇ ¿äÃ»À» ÃÖÃÊ·Î ¹Þ¾Æ ÄÁÆ®·Ñ·¯¿¡ Àü´Þ
+	DispatcherServlet ì„œë¸”ë¦¿ ë§µí•‘
+	ìŠ¤í”„ë§ ì„¤ì • íŒŒì¼ ìœ„ì¹˜ ì •ì˜
+	DispatchServlet? - í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì„ ìµœì´ˆë¡œ ë°›ì•„ ì»¨íŠ¸ë¡¤ëŸ¬ì— ì „ë‹¬
 
-5. views
-	À¥ È­¸é ÆÄÀÏ
-	
+4. views 
+	ì›¹ í™”ë©´ íŒŒì¼
 
-	
-- Controller Å¬·¡½º Á¦ÀÛ ¼ø¼­
-1. src/main/java/controller ÆÐÅ°Áö¿¡¼­ ¿ìÅ¬¸¯ ÇÏ¿© New > Class ¼±ÅÃ ÈÄ Å¬·¡½º »ý¼º
-2. Å¬·¡½º¿¡ @Controller AnnotationÀ» Ãß°¡ÇÏ¿© Controller BeanÀ¸·Î ÁöÁ¤
-3. Method¸¦ »ý¼ºÇÑ ÈÄ, @RequestMapping AnnotaionÀ» Ãß°¡ÇÏ¿© ¿äÃ» °æ·Î ÁöÁ¤
-4. ¿äÃ» Ã³¸® ±¸Çö
-5. ºä ÀÌ¸§ ¸®ÅÏ. (views folder ÆÄÀÏ)
-
-
-
+- Controller í´ëž˜ìŠ¤ ì œìž‘ ìˆœì„œ
+1. src/main/java/controller íŒ¨í‚¤ì§€ì—ì„œ ìš°í´ë¦­ í•˜ì—¬ New > Class ì„ íƒ í›„ í´ëž˜ìŠ¤ ìƒì„±
+2. í´ëž˜ìŠ¤ì— @Controller Annotationì„ ì¶”ê°€í•˜ì—¬ Controller Beanìœ¼ë¡œ ì§€ì •
+3. Methodë¥¼ ìƒì„±í•œ í›„, @RequestMapping Annotaionì„ ì¶”ê°€í•˜ì—¬ ìš”ì²­ ê²½ë¡œ ì§€ì •
+4. ìš”ì²­ ì²˜ë¦¬ êµ¬í˜„
+5. ë·° ì´ë¦„ ë¦¬í„´. (views folder íŒŒì¼)
