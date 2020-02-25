@@ -1,8 +1,16 @@
 Spring MVC Project
 
 - 개발환경 셋팅
-1. Java 설치 
-	https://jdk.java.net/ 접속후 java8버전 다운로드
+1. Java 설치<br> 
+	https://jdk.java.net/ 접속후 java8버전 다운로드<br>
+	
+1.1. Java 환경변수 설정<br>
+	[검색]에서 시스템(제어판)을 검색하여 선택합니다.<br>
+	고급 시스템 설정 링크를 누릅니다.<br>
+	환경 변수를 누릅니다. 시스템 변수 섹션에서 PATH 환경 변수를 찾아 선택합니다. 편집을 누릅니다. PATH 환경 변수가 존재하지 않을 경우 새로 만들기를 누릅니다.<br>
+	시스템 변수 편집(또는 새 시스템 변수) 창에서 PATH 환경 변수의 값을 지정합니다. 확인을 누릅니다. 확인을 눌러 나머지 창을 모두 닫습니다.<br>
+	명령 프롬프트 창을 Java -version 코드를 실행합니다.<br>
+
 
 2. tomcat 설치 
 	https://tomcat.apache.org/download-80.cgi 윈도우용 설치.
