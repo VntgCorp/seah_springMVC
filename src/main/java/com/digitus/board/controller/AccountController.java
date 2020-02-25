@@ -1,3 +1,13 @@
+/*
+ * Copyright 2020 The Spring Example Project
+ * 
+ * 회원정보 관련 요청을 처리하기위한 Controller 클래스
+ * 화면의 요청에 따른 페이지 전환과 각 페이지별 기능 요청을 처리 한다.
+ * 
+ * by Davis.
+ */
+
+
 package com.digitus.board.controller;
 
 import java.util.Locale;
@@ -17,9 +27,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.digitus.board.service.MemberService;
 import com.digitus.board.vo.Member;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class AccountController {
 	
@@ -29,7 +36,7 @@ public class AccountController {
 	MemberService service;
 	
 	/**
-	 * .
+	 * 로그인 페이지로 이동. session에 이미 로그인 정보가 있는 경우 게시판 목록으로 이동.
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -43,6 +50,10 @@ public class AccountController {
 		return "account/login";
 	}
 
+	/**
+	 * 로그인 처리.
+	 * 화면에서 제공된 Id, password 로 로그인 한다.
+	 */
 	@RequestMapping(value = "/login-check", method = RequestMethod.POST)
 	public String loginCheck(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
 		
@@ -62,12 +73,18 @@ public class AccountController {
 		return "redirect:board";
 	}
 	
-	
+	/**
+	 * 회원 추가 페이지로 이동
+	 * */
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signupPage(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
 		return "account/signup";
 	}
 	
+	/**
+	 * 회원 가입 처리
+	 * id, password, name 정보를 받아 회원 가입 처리.
+	 * */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signup(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
 		
@@ -81,6 +98,10 @@ public class AccountController {
 		return "account/loginWarning";
 	}
 	
+	/**
+	 * 회원 정보 수정 페이지로 이동.
+	 * session에 로그인 정보가 없으면 로그인 페이지로 이동시킨다.
+	 * */
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String memberUpdatePage(Model model, HttpServletRequest request) {
 		try {
@@ -97,6 +118,10 @@ public class AccountController {
 		return "account/update";
 	}
 	
+	/**
+	 * 회원 정보 수정 처리
+	 * id, name을 받아 해당 id의 사용자 정보를 업데이트 한다.
+	 * */
 	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
 	public String memberUpdate(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
 		
@@ -111,7 +136,10 @@ public class AccountController {
 		return "account/loginWarning";
 	}
 	
-
+	/**
+	 * 로그아웃 처리.
+	 * session만 null 처리 하여 로그아웃 한다.
+	 * */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
 		
@@ -120,6 +148,10 @@ public class AccountController {
 		return "account/loginWarning";
 	}
 	
+	
+	/**
+	 * 로그인 실패 처리.
+	 * */
 	@RequestMapping(value = "/login-fail", method = RequestMethod.GET)
 	public String loginFail(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("message", "로그인 후 이용해 주시기 바랍니다.");
