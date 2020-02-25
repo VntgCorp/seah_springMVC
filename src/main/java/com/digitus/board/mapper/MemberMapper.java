@@ -22,4 +22,5 @@ public interface MemberMapper {
 
 	public void create(Member member) throws SQLException;
 
+	public void update(Member member) throws SQLException;
 }

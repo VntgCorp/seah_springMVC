@@ -9,6 +9,14 @@
 		select * from member where user_id=#{userId} and `password`=password(#{password})
 	</select>
 	
+
+	<select id="update">
+		update member set
+			`name` = #{name}
+		where user_id = #{userId}
+			
+	</select>
+	
 	<insert id="create">
 		insert into member (user_id, `name`, `password`) values (#{userId}, #{name}, password(#{password}));
 	</insert>

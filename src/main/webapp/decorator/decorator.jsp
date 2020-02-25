@@ -58,7 +58,7 @@ Member member = (Member)request.getSession().getAttribute("member");
 				              <li class="active"><a href="/board">Home</a></li>
 				            </ul>
 				            <ul class="nav navbar-nav navbar-right">
-				              <li><a href="javascript:void(0);">${member.name }님 로그인</a></li>
+				              <li><a href="/member/update">${member.name }님 로그인</a></li>
 				              <li><a href="/logout" style="font-size: 12px">로그아웃</a></li>
 				        	</ul>
 				    	</div><!--/.nav-collapse -->

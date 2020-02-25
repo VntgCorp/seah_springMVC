@@ -16,4 +16,6 @@ public interface MemberService {
 
 	public void signup(Member member) throws Exception;
 
+	public void update(Member member) throws Exception;
+
 }

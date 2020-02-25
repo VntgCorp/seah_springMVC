@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService {
 	public void signup(Member member) throws Exception {
 		dao.create(member);
 	}
+
+	@Override
+	public void update(Member member) throws Exception {
+		dao.update(member);
+	}
+	
 }

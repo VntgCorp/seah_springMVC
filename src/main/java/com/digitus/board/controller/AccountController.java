@@ -36,13 +36,13 @@ public class AccountController {
 
 		logger.debug("" + request.getSession().getAttribute("member"));
 		if (request.getSession().getAttribute("member") != null) {
-			return "redirect:board/list";
+			return "redirect:/board";
 		}
 		
 		
 		return "account/login";
 	}
-	
+
 	@RequestMapping(value = "/login-check", method = RequestMethod.POST)
 	public String loginCheck(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
 		
@@ -50,7 +50,7 @@ public class AccountController {
 			Member result = service.read(member);
 			if (result == null) {
 				model.addAttribute("message", "로그인에 실패 하였습니다.");
-				return "account/login";
+				return "redirect:/login";
 			} else {
 				request.getSession().setAttribute("member", result);
 			}
@@ -80,6 +80,37 @@ public class AccountController {
 		model.addAttribute("message", "회원 가입이 완료 되었습니다.");
 		return "account/loginWarning";
 	}
+	
+	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
+	public String memberUpdatePage(Model model, HttpServletRequest request) {
+		try {
+			Member result = (Member) request.getSession().getAttribute("member");
+			if (result == null) {
+				model.addAttribute("message", "사용자 정보가 없습니다.");
+				return "redirect:/login";
+			}
+			model.addAttribute("member", result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "account/update";
+	}
+	
+	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
+	public String memberUpdate(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
+		
+		try {
+			service.update(member);
+			request.getSession().setAttribute("member", member);
+		} catch (Exception e) {
+			model.addAttribute("message", "회원정보 수정에 실패 하였습니다.");
+			e.printStackTrace();
+		}
+		model.addAttribute("message", "회원정보 수정이 완료 되었습니다.");
+		return "account/loginWarning";
+	}
+	
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
