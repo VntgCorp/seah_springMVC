@@ -27,4 +27,9 @@ public class MemberServiceImpl implements MemberService {
 	public Member read(Member member) throws Exception {
 		return dao.selectOne(member);
 	}
+
+	@Override
+	public void signup(Member member) throws Exception {
+		dao.create(member);
+	}
 }

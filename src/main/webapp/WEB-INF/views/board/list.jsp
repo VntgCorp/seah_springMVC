@@ -54,10 +54,10 @@
 				</colgroup>
 				<thead align="center">
 					<tr>
-						<th>No.</th>
+						<th style="text-align: center;">No.</th>
 						<th>제목</th>
-						<th>작성자</th>
-						<th>Action</th>
+						<th style="text-align: center;">작성자</th>
+						<th style="text-align: center;">Action</th>
 					</tr>
 				</thead>
 				<c:if test="${list ne null and list.size() eq 0 }">
@@ -81,7 +81,7 @@
 				</c:forEach>
 			</table>
 		</div>
-		<nav aria-label="Page navigation example">
+		<nav aria-label="Page navigation example" align="center">
 			<ul class="pagination justify-content-center">
 				${paginator.getPageHtml() }
 			</ul>
@@ -108,10 +108,13 @@
 			});
 
 			$('.delBtn').click(function() {
-				var bno = $(this).attr('bno');
-				document.delForm.bno.value = bno;
-				document.delForm.action = '/board/delete/' + bno;
-				$('#delForm').submit();
+
+				if (confirm('삭제 하시겠습니까?')){
+					var bno = $(this).attr('bno');
+					document.delForm.bno.value = bno;
+					document.delForm.action = '/board/delete/' + bno;
+					$('#delForm').submit();
+				}
 
 			});
 

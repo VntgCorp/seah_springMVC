@@ -34,46 +34,54 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row justify-content-center" style="margin-top:100px;">
-			<aside class="col col-sm-4">
-				<div class="card">
-					<article class="card-body">
-						<h4 class="card-title mb-4 mt-1">Sign in</h4>
-						<hr>
-						<form method="POST" action="/login-check">
-							<div class="form-group">
-								<input name="userId" class="form-control" placeholder="login" value="">
-							</div>
-							<!-- form-group// -->
-							<div class="form-group">
-								<input class="form-control" placeholder="******" type="password"
-									name="password">
-							</div>
-							<!-- form-group// -->
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary btn-block">
-											Login</button>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<button type="button" class="btn btn-default btn-block" onclick="javascript:location.href='/signup';">
-											Sign Up</button>
-									</div>
-								</div>
-							</div>
-							<!-- .row// -->
-						</form>
-					</article>
+		<div class="row justify-content-center" style="margin-top: 100px;">
+			<form name="writeForm" id="writeForm" method="POST" action="/signup" onSubmit="check_password()">
+				<div class="form-group">
+					<label for="userId">아이디</label> 
+					<input type="text" class="form-control" id="userId" name="userId" required>
 				</div>
-				<!-- card.// -->
-			</aside>
+				<div class="form-group">
+					<label for="name">이름</label> 
+					<input type="text" class="form-control" id="name" name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" required>
+				</div>
+				<div class="form-group">
+					<label for="confirm">Confirm Password</label>
+					<input type="password" class="form-control" id="confirm" name="confirm" required>
+				</div>
+				<!-- form-group// -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-block">
+								저장</button>
+						</div>
+					</div>
+				</div>
+				<!-- .row// -->
+			</form>
 		</div>
 	</div>
-
 	<script type="text/javascript">
+		$(function() { 
+			$("#writeForm").validate(); 
+		});
+
+		function check_password() {
+			if ($('#password').val() != $('#confirm').val()) {
+				alert('패스워드를 확인해 주세요.');
+				return false;
+			}
+			return true;
+		}
+
+		function writeBoard() {
+			$('#writeForm').submit();
+		}
+		
 		<c:if test="${message ne null }">
 		window.alert("${message}");
 		</c:if>
@@ -82,7 +90,7 @@
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

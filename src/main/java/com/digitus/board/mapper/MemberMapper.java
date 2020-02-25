@@ -9,6 +9,8 @@
 
 package com.digitus.board.mapper;
 
+import java.sql.SQLException;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.digitus.board.vo.Member;
@@ -16,6 +18,8 @@ import com.digitus.board.vo.Member;
 @Mapper
 public interface MemberMapper {
 
-	public Member selectOne(Member member) throws Exception;
+	public Member selectOne(Member member) throws SQLException;
+
+	public void create(Member member) throws SQLException;
 
 }

@@ -56,26 +56,20 @@
 	</filter-mapping>
 	<!-- 문자 인코딩 끝 -->
 
-	<!-- HTTP Method Filter 
 	<filter>
-		<filter-name>httpMethodFilter</filter-name>
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter
-		</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>httpMethodFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter>
-		<filter-name>getMethodConvertingFilter</filter-name>
-		<filter-class>com.digitus.board.filter.GetMethodConvertingFilter</filter-class>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.digitus.board.filter.SiteMeshFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
-		<filter-name>getMethodConvertingFilter</filter-name>
+		<filter-name>sitemesh</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
-	-->
+	<!-- HTTP Method Filter <filter> <filter-name>httpMethodFilter</filter-name> 
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter </filter-class> 
+		</filter> <filter-mapping> <filter-name>httpMethodFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> <filter> <filter-name>getMethodConvertingFilter</filter-name> 
+		<filter-class>com.digitus.board.filter.GetMethodConvertingFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>getMethodConvertingFilter</filter-name> 
+		<url-pattern>/*</url-pattern> <dispatcher>FORWARD</dispatcher> </filter-mapping> -->
 </web-app>

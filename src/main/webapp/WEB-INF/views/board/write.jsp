@@ -43,7 +43,10 @@
 		crossorigin="anonymous"></script>
 </head>
 <%
-Member member = (Member)request.getSession().getAttribute("member"); %>
+Member member = (Member)request.getSession().getAttribute("member"); 
+%>
+<c:set value="<%=member %>" var="member" />
+							
 <body>
 
 	<div class="container">
@@ -71,7 +74,6 @@ Member member = (Member)request.getSession().getAttribute("member"); %>
 					<tr>
 						<th scope="col">작성자</th>
 						<td>
-							<c:set value="<%=member %>" var="member" />
 							${member.name }							
 							<input type="hidden" name="userId" value="${member.userId }">
 							<input type="hidden" name="writer" value="${member.name}">

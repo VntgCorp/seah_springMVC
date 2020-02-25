@@ -61,13 +61,32 @@ public class AccountController {
 		
 		return "redirect:board";
 	}
+	
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signupPage(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
+		return "account/signup";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String signup(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
+		
+		try {
+			service.signup(member);
+		} catch (Exception e) {
+			model.addAttribute("message", "회원 가입에 실패 하였습니다.");
+			e.printStackTrace();
+		}
+		model.addAttribute("message", "회원 가입이 완료 되었습니다.");
+		return "account/loginWarning";
+	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
 		
 		request.getSession().setAttribute("member", null);
 		model.addAttribute("message", "로그아웃 되었습니다.");
-		return "account/login";
+		return "account/loginWarning";
 	}
 	
 	@RequestMapping(value = "/login-fail", method = RequestMethod.GET)
