@@ -55,9 +55,8 @@ public class AccountController {
 	 * 화면에서 제공된 Id, password 로 로그인 한다.
 	 */
 	@RequestMapping(value = "/login-check", method = RequestMethod.POST)
-	public String loginCheck(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) {
+	public String loginCheck(@ModelAttribute("member") Member member, Model model, HttpServletRequest request) throws Exception {
 		
-		try {
 			Member result = service.read(member);
 			if (result == null) {
 				model.addAttribute("message", "로그인에 실패 하였습니다.");
@@ -65,10 +64,6 @@ public class AccountController {
 			} else {
 				request.getSession().setAttribute("member", result);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "account/login";
-		}
 		
 		return "redirect:board";
 	}

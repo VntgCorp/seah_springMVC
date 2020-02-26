@@ -74,8 +74,8 @@
 	</div>
 
 	<script type="text/javascript">
-		<c:if test="${message ne null }">
-		window.alert("${message}");
+		<c:if test="${param.message ne null}">
+		window.alert("${param.message}");
 		</c:if>
 	</script>
 

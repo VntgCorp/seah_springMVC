@@ -25,6 +25,7 @@ public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 		builder.addDecoratorPath("/login", "/decorator/empty.jsp");
 		builder.addDecoratorPath("/signup", "/decorator/empty.jsp");
 		builder.addDecoratorPath("/member/**", "/decorator/empty.jsp");
+		builder.addDecoratorPath("/error/**", "/decorator/empty.jsp");
 		builder.addExcludedPath("/api**");
 	}
 	
